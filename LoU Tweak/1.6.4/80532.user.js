@@ -10,7 +10,7 @@
 (function(){
 
 var LT_mainFunction = function() {
-
+	var sta = "OFF";
 	function createTweak() {
 		var LTversion = "1.6.4";
 		var louTweak = {};
@@ -1193,6 +1193,27 @@ var LT_mainFunction = function() {
 					this.moveBuildingDetView = this.app.getMoveBuildingDetailView()
 					this.tweakLoU();
 				},
+
+				//Luxe Function to automate upgrading//-----------------------------------------------------------------------------------------
+				labelupdate: function(){
+                    
+					this.labella.setValue(sta);
+				},
+
+		  		autoupgrade: function() {
+		  		    if (sta == "ON"){
+					this.upgradeLowestLevelBuilding("A");
+					this.cBar.nextButton.execute();
+					this.timer.start(this.autoupgrade, null, this, null, 15000);
+					}
+				},
+				//Luxe Function to automate upgrading 1 city//----------------------------------------------------------------------------------
+		  		autoupgrade2: function() {
+					this.upgradeLowestLevelBuilding("A");	
+					//this.cBar.nextButton.execute();
+					this.timer.start(this.autoupgrade2, null, this, null, 10000);
+				},
+
 				tweakLoU: function() {
 					_LT = LT;
 					this.loadOptions();
@@ -1223,7 +1244,25 @@ var LT_mainFunction = function() {
 					btn.set({width: 30, appearance: "button-text-small", toolTipText: L("options_btn_tt")});
 					btn.addListener("click", this.showOptionsPage, this);
 					this.srvBar.add(btn, {top: 2, left: 390});
+
+					// *****Luxe AutoUpdate *****//----------------------------------------------------------------------------------------------
+					//LABEL
+					//labella = new qx.ui.basic.Label(set);
+					//this.srvBar.add(labella, {top: 2, left: 580});
+
+					// *****Luxe AutoUpdate *****//----------------------------------------------------------------------------------------------
+					btn = new qx.ui.form.Button("ON");
+					btn.set({width: 54, appearance: "button-text-small", toolTipText: "simulate pressing L - on"});
+					btn.addListener("click",function(){sta = "ON"; this.autoupgrade();}, this);
+					this.srvBar.add(btn, {top: 2, left: 440});
 					
+					// *****Luxe AutoUpdate *****//---------------------------------------------------------------------------------------------
+					btn = new qx.ui.form.Button("OFF");
+					btn.set({width: 54, appearance: "button-text-small", toolTipText: "simulate pressing L - off"});
+					btn.addListener("click",function(){sta = "OFF"; this.autoupgrade();}, this);
+					this.srvBar.add(btn, {top: 2, left: 500});
+
+
 					// ***** City layout button ***** //
 					btn = new qx.ui.form.Button("L");
 					btn.set({width: 25, appearance: "button-text-small", toolTipText: L("layout_btn_tt")});
