@@ -1215,6 +1215,7 @@ var LT_mainFunction = function() {
 					this.upgradeLowestLevelBuilding("A");	
 					//this.cBar.nextButton.execute();
 					this.timer.start(this.autoupgrade2, null, this, null, 10000);
+					}
 				},
 
 				tweakLoU: function() {
@@ -1268,7 +1269,7 @@ var LT_mainFunction = function() {
 					// *****Luxe AutoUpdate *****//---------------------------------------------------------------------------------------------
 					btn = new qx.ui.form.Button("OFF");
 					btn.set({width: 54, appearance: "button-text-small", toolTipText: "simulate pressing L - off"});
-					btn.addListener("click",function(){sta = "OFF"; this.autoupgrade();}, this);
+					btn.addListener("click",function(){sta = "OFF";}, this);
 					this.srvBar.add(btn, {top: 2, left: 560});
 
 
