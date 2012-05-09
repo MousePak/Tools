@@ -1251,16 +1251,22 @@ var LT_mainFunction = function() {
 					//this.srvBar.add(labella, {top: 2, left: 580});
 
 					// *****Luxe AutoUpdate *****//----------------------------------------------------------------------------------------------
-					btn = new qx.ui.form.Button("ON");
+					btn = new qx.ui.form.Button("ON-all");
 					btn.set({width: 54, appearance: "button-text-small", toolTipText: "simulate pressing L - on"});
 					btn.addListener("click",function(){sta = "ON"; this.autoupgrade();}, this);
 					this.srvBar.add(btn, {top: 2, left: 440});
+					
+					// *****Luxe AutoUpdate *****//----------------------------------------------------------------------------------------------
+					btn = new qx.ui.form.Button("ON-1");
+					btn.set({width: 54, appearance: "button-text-small", toolTipText: "simulate pressing L - on"});
+					btn.addListener("click",function(){sta = "ON"; this.autoupgrade2();}, this);
+					this.srvBar.add(btn, {top: 2, left: 500});
 					
 					// *****Luxe AutoUpdate *****//---------------------------------------------------------------------------------------------
 					btn = new qx.ui.form.Button("OFF");
 					btn.set({width: 54, appearance: "button-text-small", toolTipText: "simulate pressing L - off"});
 					btn.addListener("click",function(){sta = "OFF"; this.autoupgrade();}, this);
-					this.srvBar.add(btn, {top: 2, left: 500});
+					this.srvBar.add(btn, {top: 2, left: 560});
 
 
 					// ***** City layout button ***** //
