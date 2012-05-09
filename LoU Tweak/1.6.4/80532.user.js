@@ -1268,7 +1268,7 @@ var LT_mainFunction = function() {
 					// *****Luxe AutoUpdate *****//---------------------------------------------------------------------------------------------
 					btn = new qx.ui.form.Button("OFF");
 					btn.set({width: 54, appearance: "button-text-small", toolTipText: "simulate pressing L - off"});
-					btn.addListener("click",function(){sta = "OFF";}, this);
+					btn.addListener("click",function(){sta = "OFF"; this.autoupgrade();}, this);
 					this.srvBar.add(btn, {top: 2, left: 560});
 
 
