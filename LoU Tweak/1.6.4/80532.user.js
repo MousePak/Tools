@@ -1201,14 +1201,17 @@ var LT_mainFunction = function() {
 				},
 
 		  		autoupgrade: function() {
-		  		    if (sta == "ON"){
+		  		    if (sta == "ON" || sta == "ON1"){
 					this.upgradeLowestLevelBuilding("A");
-					this.cBar.nextButton.execute();
+					if (sta == "ON"){
+						this.cBar.nextButton.execute();
+					}
 					this.timer.start(this.autoupgrade, null, this, null, 15000);
 					}
 				},
 				//Luxe Function to automate upgrading 1 city//----------------------------------------------------------------------------------
 		  		autoupgrade2: function() {
+		  		    if (sta == "ON"){
 					this.upgradeLowestLevelBuilding("A");	
 					//this.cBar.nextButton.execute();
 					this.timer.start(this.autoupgrade2, null, this, null, 10000);
@@ -1259,13 +1262,13 @@ var LT_mainFunction = function() {
 					// *****Luxe AutoUpdate *****//----------------------------------------------------------------------------------------------
 					btn = new qx.ui.form.Button("ON-1");
 					btn.set({width: 54, appearance: "button-text-small", toolTipText: "simulate pressing L - on"});
-					btn.addListener("click",function(){sta = "ON"; this.autoupgrade2();}, this);
+					btn.addListener("click",function(){sta = "ON1"; this.autoupgrade();}, this);
 					this.srvBar.add(btn, {top: 2, left: 500});
 					
 					// *****Luxe AutoUpdate *****//---------------------------------------------------------------------------------------------
 					btn = new qx.ui.form.Button("OFF");
 					btn.set({width: 54, appearance: "button-text-small", toolTipText: "simulate pressing L - off"});
-					btn.addListener("click",function(){sta = "OFF"; this.autoupgrade();}, this);
+					btn.addListener("click",function(){sta = "OFF"; false;}, this);
 					this.srvBar.add(btn, {top: 2, left: 560});
 
 
